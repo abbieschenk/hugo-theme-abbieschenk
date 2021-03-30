@@ -105,7 +105,10 @@ Descriptions should be max 140 characters, as they are also entered into the sit
 Cloudinary images can be easily added to your posts with the Cloudinary shortcode:
 
 ```go
-{{< cloudinary src="folder/path-to-your-image.jpg" alt="Alt text for accessibility" caption="An optional caption for the image" >}}
+{{< cloudinary 
+  src="folder/path-to-your-image.jpg" 
+  alt="Alt text for accessibility" 
+  caption="An optional caption for the image" >}}
 ```
 
 **Always include either descriptive alt text or a caption for all of your images for site accessibility!**
