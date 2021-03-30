@@ -3,8 +3,8 @@
 
 name = "abbieschenk"
 license = "MIT"
-licenselink = "https://github.com/abbieschenk/abbieschenk/blob/master/LICENSE"
-description = "A minimal photography-focused blog and portfolio theme."
+licenselink = "https://github.com/abbieschenk/hugo-theme-abbieschenk/blob/main/LICENSE"
+description = "A minimal, photography-focused blog and portfolio theme."
 homepage = "http://abbieschenk.com/"
 tags = ["minimalist", "blog", "portfolio", "photography"]
 features = ["cloudinary"]
