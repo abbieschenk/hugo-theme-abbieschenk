@@ -1,0 +1,22 @@
+{{- define "main" -}}
+
+<div id="page-title">
+    {{- .Title | title -}}
+</div>
+<div id="list-content">
+    {{- range .Pages.GroupBy "Section" -}}
+        {{- $section := $.Site.GetPage "section" .Key -}}
+        {{- $.Scratch.Add "bySection" (slice (dict "page" . "section" $section.Title "weight" $section.Weight )) -}}
+    {{- end -}}
+
+    {{- range sort ($.Scratch.Get "bySection") ".weight" "asc" -}}
+        <div class="list-section">
+            <h1>{{ .section }}</h1> 
+            {{- range .page.Pages.ByPublishDate.Reverse -}}
+                {{- partial "content-data.html" (dict "context" . "includeLink" true) -}}
+            {{- end -}}
+        </div>
+    {{- end -}} 
+</div>
+
+{{- end -}}

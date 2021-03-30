@@ -1,0 +1,433 @@
+// TODO: This will be split into scss partials once dartsass support is out of beta
+
+$accent-color: {{ .Site.Params.accentColor }};
+$accent-color-active: lighten($accent-color, 10%);
+$text-color: #333;
+
+$black-border: 3px solid black;
+$accent-border: 3px solid $accent-color;
+$white-border: 3px solid white;
+
+$break-point-max-w-1: 1250px;
+
+$content-default-width: 650px;
+
+/** Fonts **/
+
+/*
+* Imported Google Fonts
+*
+* Header: Poppins (300, 400, 500)
+* Body: Lora (400, 400 italic, 600, 600 italic)
+*
+* For a sans-serif body font alternative, I recommend Open Sans.
+*
+*/
+$header-font: 'Poppins', sans-serif;
+$body-font: 'Lora', serif;
+
+@mixin header-medium {
+    font-family: $header-font;
+    font-weight: 500;
+    font-style: normal;
+}
+
+@mixin header-regular {
+    font-family: $header-font;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin header-light {
+    font-family: $header-font;
+    font-weight: 300;
+    font-style: normal;
+}
+
+@mixin body-regular {
+    font-family: $body-font;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin body-semi-bold {
+    font-family: $body-font;
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+/** Other Mixins **/
+
+@mixin unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin centered($content-width) {
+    width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin default-width() {
+    @include centered(750px);
+    max-width: 90%;
+}
+
+/** Components **/
+
+@mixin button {
+    @include header-medium();
+    @include unselectable();
+    
+    display: inline-block;
+    margin: 2px; 
+    
+    color: black;
+    text-decoration: none;
+    
+    padding: 1px 4px 1px 4px;
+    border: solid 2px black;
+
+    background-color: white;
+
+    &:hover {
+        background-color: $accent-color;
+        color: white;
+    }
+
+    &:active {
+        background-color: $accent-color-active;
+        color: white;
+    }
+}
+
+/** Default Tags **/
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @include body-regular();
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+
+    background-color: white;
+}
+
+strong {
+    @include body-semi-bold();
+}
+
+a {
+    color: $accent-color;
+
+    :active {
+        color: $accent-color-active;
+    }
+
+    :visited {
+        color: $accent-color;
+    }
+}
+
+h1, h2, h3, h4 {
+    @include header-medium();
+    margin-block-end: 0;
+}
+
+main {
+    padding-top: 4.0rem;
+    padding-bottom: 10.0rem;
+
+    overflow-x: hidden;
+}
+
+header {
+    background-color: black;
+}
+
+footer {
+    @include default-width();
+
+    position: absolute;
+    
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 2.0em;
+
+    display: flex;
+
+    #footer-text {
+        @include header-medium();
+        flex-grow: 1;
+    }
+}
+
+/** Nav **/
+
+nav {
+    @include default-width();
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    height: 90px;
+
+    .nav-menu {
+        flex-grow: 1;
+    }
+
+    @media (max-width: $break-point-max-w-1) {
+        padding-top: 80px;
+    }
+
+    @media (max-width: 500px) {
+        padding-top: 100px;
+        padding-bottom: 30px;
+        align-items: flex-start;
+        
+        .nav-link {
+            display: block;
+            margin-right: 30%;
+            
+        }
+    }
+
+    .social-icon {
+        color: white;
+
+        &:hover {
+            color: white;
+            border-bottom: $white-border;
+        }
+    }
+}
+
+.nav-link {
+    @include header-medium();   
+
+    text-decoration: none;
+    font-size: 1.2rem;
+
+    margin-right: 10px;
+
+    border-bottom: 3px solid transparent;
+    
+    color: white;
+    
+    &:hover {
+        border-bottom: $white-border;
+    }
+}
+
+.social-icon {
+    color: black;
+    text-decoration: none;
+    margin: 3px;
+    
+    &:hover {
+        color: $accent-color;
+        border-bottom: $accent-border;
+    }
+}
+
+#site-logo {
+    position: fixed;
+
+    z-index: 50;
+
+    top: 18px;
+    width: 220px;
+
+    mix-blend-mode: difference;
+    
+    left: -webkit-calc((100% - 750px) / 2 - 250px);
+    left:    -moz-calc((100% - 750px) / 2 - 250px);
+    left:         calc((100% - 750px) / 2 - 250px);
+
+    svg {
+        fill: white;
+
+        &:hover {
+            fill: invert($accent-color);
+        }
+    }
+    
+
+    @media (max-width: $break-point-max-w-1) {
+        left: 5%;
+    }
+}
+
+/** Content **/
+
+#page-title {
+    @include header-medium();
+
+    text-align: center;
+    font-size: 3.0rem;
+    margin-bottom: 4.0rem;
+}
+
+.tag-button {
+    @include button();
+}
+
+.content-body {
+    
+    figure {
+        background-color: black;
+        
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+
+        padding: 20px 0;
+    
+        figcaption {
+            @include default-width();
+            
+            padding-top: 10px;
+            
+            text-align:center;
+            font-size: 0.9rem;
+            color: white;
+        }
+    }
+  
+    img {
+        display: block;
+        @include centered(1000px);
+
+        max-width: 100%;
+    }
+}
+
+#list-content {
+    @include default-width();
+
+    .list-section:not(:first-child) {
+        padding-top: 20px;
+
+    }
+}
+
+.content-data {
+    border-top: $accent-border;
+    padding: 10px 0;
+    margin: 20px 0;
+
+    .content-header {
+        display: flex;
+        text-decoration: none;
+
+        .content-title {
+            @include header-medium();
+            font-size: 1.5rem;
+            line-height: 1.2;
+
+            color: black;
+            margin-right: 5px;
+
+            flex-grow: 1;
+        }
+
+        time {
+            @include header-medium();
+            color: black;
+            flex-shrink: 0;
+        }
+    }
+
+    .content-description {
+        margin: 10px 0;
+        color: $text-color;
+    }
+
+    .metadata-tags {
+        margin: 20px 0;
+    }
+}
+
+.single {    
+    .content-data {
+        @include default-width();
+        
+        .content-header>.content-title {
+            position: relative;
+            font-size: 2.0rem;
+            top: -0.1rem;
+
+            @media (min-width: 810px) {
+                font-size: 3.0rem;
+                top: -0.2rem;
+            }
+        }
+
+        .content-description {
+            font-size: 1.25rem;
+            font-style: italic;
+        }
+    }
+
+    .content-body {
+        h1, h2, h3, h4, p, .highlight, .footnotes, ul {
+            @include centered($content-default-width);
+            max-width: 90%;
+        }
+
+        p, ul {
+            font-size: 1.25em;
+            line-height: 1.7;
+            color: $text-color;
+
+            code {
+                background-color: #EEE;
+                padding: 5px 3px;
+            }
+        }
+
+        pre {
+            overflow-x: auto;
+        }
+    }
+}
+
+.comments {
+    @include default-width();
+    padding-top: 20px;
+    border-top: $black-border;
+}
+
+.home{
+    .content-body {
+        @include default-width();
+
+        @media (min-width: 810px) {
+            border: $black-border;
+        }
+    }
+}
+
+.fourohfour {
+    .content-body {
+        @include default-width();
+
+        text-align: center;
+    }
+
+    .home-button {
+        @include button;
+    }
+}

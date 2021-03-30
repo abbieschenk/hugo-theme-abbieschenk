@@ -1,0 +1,13 @@
+{{- define "main" -}}
+
+<div class="single">
+    {{- partial "content-data.html" (dict "context" .) -}}
+    <div class="content-body">
+        {{- .Content -}}    
+    </div>
+    <div class="comments">
+        {{ template "_internal/disqus.html" . }}
+    </div>
+</div>
+
+{{- end -}}

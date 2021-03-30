@@ -1,0 +1,5 @@
+{{- $icons := resources.Get "js/feather/feather.min.js" -}}
+{{- $cloudinary := resources.Get "js/cloudinary/cloudinary-core-shrinkwrap.min.js" -}}
+{{- $abbieschenk := resources.Get "js/abbieschenk.js" | js.Build (dict "params" (dict "cloudinaryAccount" .Site.Params.cloudinaryAccount )) -}}
+{{- $js := slice $icons $cloudinary $abbieschenk | resources.Concat "js/bundle.js" -}}
+<script src = '{{ $js.RelPermalink }}'></script>

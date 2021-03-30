@@ -1,0 +1,8 @@
+<div class="content-data">
+    <a class="content-header" {{ if .includeLink }}href="{{ .context.RelPermalink }}"{{ end }}>
+        <span class="content-title">{{ .context.Title }}</span>
+        {{- partial "datetime.html" .context -}}
+    </a>
+    <div class="content-description">{{ .context.Description }}</div>
+    {{- partial "metadata-tags.html" .context -}}
+</div>

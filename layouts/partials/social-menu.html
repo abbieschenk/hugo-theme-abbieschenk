@@ -1,0 +1,5 @@
+<div class="social-menu">
+    {{- range .Site.Menus.social -}}
+    <a class="social-icon" href="{{ .URL }}" target="_blank" rel="me"><i data-feather="{{ .Pre }}"></i></a>
+    {{- end -}}
+</div>

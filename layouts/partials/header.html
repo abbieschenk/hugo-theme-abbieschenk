@@ -1,0 +1,17 @@
+<header>
+    <div id="site-logo">
+        <a href="/">
+        {{- $logo := resources.Get "svg/logo.svg" -}}
+        {{- $logo.Content | htmlUnescape | safeHTML -}}
+        </a>
+    </div>
+    <nav>
+        <div class="nav-menu">
+            {{- range .Site.Menus.main -}}
+                {{- $text := print .Name | safeHTML -}}
+                <a class="nav-link" href="{{ .URL }}">{{ $text }}</a>
+            {{- end -}}
+        </div>
+        {{- partial "social-menu.html" . -}}
+    </nav>
+</header>

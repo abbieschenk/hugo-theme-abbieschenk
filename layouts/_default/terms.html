@@ -1,0 +1,12 @@
+{{- define "main" -}}
+
+<div id="page-title">
+    {{- .Title -}}
+</div>
+<div id="list-content">  
+    {{- range .Data.Terms.ByCount -}}
+    <a class="tag-button" href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+    {{- end -}}
+</div>
+
+{{- end -}}

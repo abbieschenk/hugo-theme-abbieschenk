@@ -1,0 +1,10 @@
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+{{- $main := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "scss/main.scss" . -}}
+{{- $user := resources.Get "scss/user.scss" | resources.ExecuteAsTemplate "scss/user.scss" . -}}
+{{- $sass := slice $main $user | resources.Concat "scss/style.scss"}}
+{{- $options := (dict "outputStyle" "compressed" "includePaths" (slice "scss/user.scss")) }}
+{{- $style := $sass | resources.ToCSS $options | fingerprint -}}
+<link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}">
+

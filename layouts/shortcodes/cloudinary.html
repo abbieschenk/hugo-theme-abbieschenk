@@ -1,0 +1,13 @@
+{{/* Adapted from https://harrycresswell.com/articles/cloudinary/ */}}
+<figure class="cloudinary-figure">
+{{- if .Get "caption" -}}
+{{ else }}
+    {{- if not (.Get "alt") -}}
+        {{- errorf "%s has neither an alt tag nor a caption! All images must have one of either for accessibility." (.Get "src") -}}
+    {{- end -}}
+{{- end -}}
+<img data-src="https://res.cloudinary.com/{{ .Site.Params.cloudinary }}/image/upload/w_auto,dpr_auto,c_scale,f_auto,q_auto/{{ .Get "src" }}" class="cld-responsive" alt="{{ .Get "alt" }}">
+{{- if .Get "caption" -}}
+<figcaption>{{ .Get "caption" }}</figcaption>
+{{- end -}}
+</figure>
