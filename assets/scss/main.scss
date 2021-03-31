@@ -11,6 +11,8 @@ $white-border: 3px solid white;
 $break-point-max-w-1: 1250px;
 
 $content-default-width: 650px;
+$image-default-width: 1000px;
+$post-default-width: 750px;
 
 /** Fonts **/
 
@@ -75,7 +77,7 @@ $body-font: 'Lora', serif;
 }
 
 @mixin default-width() {
-    @include centered(750px);
+    @include centered($post-default-width);
     max-width: 90%;
 }
 
@@ -308,7 +310,7 @@ nav {
   
     img {
         display: block;
-        @include centered(1000px);
+        @include centered($image-default-width);
 
         max-width: 100%;
     }
@@ -385,6 +387,10 @@ nav {
         h1, h2, h3, h4, p, .highlight, .footnotes, ul {
             @include centered($content-default-width);
             max-width: 90%;
+        }
+
+        .youtubex {
+            @include default-width();
         }
 
         p, ul {

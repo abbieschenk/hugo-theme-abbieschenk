@@ -115,6 +115,24 @@ Cloudinary images can be easily added to your posts with the Cloudinary shortcod
 
 As a convenient reminder to form a habit, the site will refuse to build if you forget to include alt text or a caption on one of your images. [See w3.org](https://www.w3.org/WAI/tutorials/images/tips/) for some tips on how to write alt text.
 
+### YouTube
+
+YouTube videos show at 100% width when using the default Hugo shortcode. I added a shortcode using [gaetawoo's solution](https://discourse.gohugo.io/t/youtube-container-size-issues/7442/4) on the Hugo forums, and wraps it all in a div with the .youtubex class. Since the original YouTube shortcode might still be desired, this is called by using `{{< youtubex YoUtUBeID32 >}}`.
+
+And as described in the post on the forum, it's possible to define your own aspect ratio (although this isn't necessarily necessary).
+
+```go
+{{< youtube Pt9MjE70Fd8 >}}
+{{< youtube Pt9MjE70Fd8 widescreen >}}
+{{< youtube Pt9MjE70Fd8 standard >}}
+{{< youtube Pt9MjE70Fd8 "16:9" >}}
+{{< youtube Pt9MjE70Fd8 "4:3" >}}
+{{< youtube Pt9MjE70Fd8 "235:100" >}}
+
+/* And it even works with vertical videos */
+{{< youtube 17uHCHfgs60 "9:16" >}}
+```
+
 ## Customization
 
 ### Custom SCSS
