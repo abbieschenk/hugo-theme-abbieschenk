@@ -17,18 +17,20 @@ My website abbieschenk.com is always running the latest version of this theme. I
   - [Custom SCSS](#custom-scss)
   - [Site Icon](#site-icon)
   - [Favicons](#favicons)
+  - [Site Image](#site-image)
   - [User-Defined Header and Footer](#user-defined-header-and-footer)
 
 ## Config
 
 ### General
-You'll need to set up your site's config.toml. You need to include the following defaults:
+You'll need to set up your site's config.toml. You should include the following defaults:
 
 ```toml
 baseURL = "http://localhost" # change to your site's base URL
 languageCode = "en-ca"
 title = "Your Site Title"
 theme = "hugo-theme-abbieschenk"
+googleAnalytics = "G-IDCODE" # optional
 
 [author]
   name = "Your Name"
@@ -172,10 +174,13 @@ See the styling in main.scss for reference and to change this behaviour, such as
 ### Favicons
 To replace the placeholder, add three files to your site's /static/ folder: favicon.ico, icon.svg, and apple-touch-icon.png. I recommend [this](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs) tutorial to figure out how to create those files. If you wish to add more options, you will need to add the appropriate `<link>` tags in [user-head.html](#user-defined-header-and-footer).
 
+### Site Image
+Add an image to your site at /assets/img/default.jpg to replace the default site image. This is only used for social media cards, and only on the home page.
+
 ### User-Defined Header and Footer
 You may want to add additional scripts, links, etc. to your user header or below the footer. To do so without copy + pasting the contents of the existing head.html and baseof.html, you only need to overwrite the user-head.html and user-script.html by creating these files in your site's /layouts/partials/. These are left blank by default. 
 
-user-head.html is added at the end of head.html, before the title tag. I use this to add my Google Analytics script.
+user-head.html is added at the end of head.html, before the title tag.
 
 user-script.html is added after the script tags, below the footer. 
 
