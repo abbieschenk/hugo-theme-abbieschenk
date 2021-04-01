@@ -117,6 +117,8 @@ Cloudinary images can be easily added to your posts with the Cloudinary shortcod
 
 As a convenient reminder to form a habit, the site will refuse to build if you forget to include alt text or a caption on one of your images. [See w3.org](https://www.w3.org/WAI/tutorials/images/tips/) for some tips on how to write alt text.
 
+The social image can also be set using the `socialcloudinaryimg: "path/in/cloudinary"` parameter in your post header. Otherwise, it will default to your site's [default image](#site-image).
+
 ### YouTube
 
 YouTube videos show at 100% width when using the default Hugo shortcode. I added a shortcode using [gaetawoo's solution](https://discourse.gohugo.io/t/youtube-container-size-issues/7442/4) on the Hugo forums, and wraps it all in a div with the .youtubex class. Since the original YouTube shortcode might still be desired, this is called by using `{{< youtubex YoUtUBeID32 >}}`.

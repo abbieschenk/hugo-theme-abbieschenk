@@ -6,6 +6,7 @@
     {{- if .IsHome -}}
         {{- $title = .Site.Title -}}
     {{- end -}}
+
     <meta name="description" content="{{ .Description }}">
     <meta property="og:url" content="{{ .Page.Permalink }}">
     <meta property="og:type" content="website">
@@ -20,7 +21,11 @@
     <meta name="twitter:url" content="{{ .Page.Permalink }}">
     <meta name="twitter:title" content="{{ $title }}">
     <meta name="twitter:description" content="{{ .Description }}">
-    {{- if .IsHome -}}
+    {{- $imgPath := .Page.Params.SocialCloudinaryImg -}}
+    {{- if $imgPath }}
+        <meta property="og:image" content="{{ partial "cloudinary-url.html" (dict "context" . "src" $imgPath) }}">
+        <meta name="twitter:image" content="{{ partial "cloudinary-url.html" (dict "context" . "src" $imgPath) }}">
+    {{- else -}}
         {{- $img := resources.Get "img/default.jpg" -}}
         <meta property="og:image" content="{{ $img.Permalink }}">
         <meta name="twitter:image" content="{{ $img.Permalink }}">
