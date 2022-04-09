@@ -9,6 +9,7 @@ $accent-border: 3px solid $accent-color;
 $white-border: 3px solid white;
 
 $break-point-max-w-1: 1250px;
+$break-point-min-w-1: 810px;
 
 $content-default-width: 650px;
 $image-default-width: 1000px;
@@ -221,7 +222,7 @@ nav {
     text-decoration: none;
     font-size: 1.2rem;
 
-    margin-right: 10px;
+    margin-right: 12px;
 
     border-bottom: 3px solid transparent;
     
@@ -371,7 +372,7 @@ nav {
             font-size: 2.0rem;
             top: -0.1rem;
 
-            @media (min-width: 810px) {
+            @media (min-width: $break-point-min-w-1) {
                 font-size: 3.0rem;
                 top: -0.2rem;
             }
@@ -394,7 +395,7 @@ nav {
         }
 
         p, ul {
-            font-size: 1.25em;
+            font-size: 1.25rem;
             line-height: 1.7;
             color: $text-color;
 
@@ -420,10 +421,23 @@ nav {
     .content-body {
         @include default-width();
 
-        @media (min-width: 810px) {
+        @media (min-width: $break-point-min-w-1) {
             border: $black-border;
         }
     }
+
+    &.projects {
+        border: $white-border;
+        h1 {
+            @include default-width();
+        }
+
+        @media (max-width: $break-point-min-w-1) {
+            border: $black-border;
+        }
+    
+    }
+    
 }
 
 .fourohfour {

@@ -1,0 +1,8 @@
+<div id="page-title">
+    {{- .Title -}}
+</div>
+<div id="list-content">
+    {{- range .Pages.ByPublishDate.Reverse -}}
+    {{- partial "content-data.html" (dict "context" . "includeLink" true) -}}
+    {{- end -}}
+</div>

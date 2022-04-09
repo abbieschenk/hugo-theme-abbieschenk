@@ -1,10 +1,16 @@
 {{ define "main" }}
 
 <div class="home single">
-    <div id="page-title">{{ .Title }}</div>
     <div class="content-body">
         {{- .Content -}}    
     </div>
+    
+</div>
+<div class="home projects">
+    <h1 id=projects>
+        Projects
+    </h1>
+    {{- partial "list-pages.html" . -}}
 </div>
 
 {{- end -}}
